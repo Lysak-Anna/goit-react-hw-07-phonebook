@@ -17,9 +17,10 @@ export default function ContactForm() {
     const name = event.currentTarget.elements.name.value;
     const phone = event.currentTarget.elements.number.value;
     checkName(contacts, name)
-      ? alert(`${name} is already in contacts`)
-      : dispatch(addContact({ name, phone }));
-    message && toast.success('This contact was successfully added');
+      ? toast.warning(`${name} is already in your contacts`)
+      : dispatch(addContact({ name, phone })) &&
+        message &&
+        toast.success('This contact was successfully added');
     event.currentTarget.reset();
   }
 
